@@ -4,7 +4,7 @@ import { getTasks } from '../redux/tasksSlice';
 
 const Task = () => {
   const dispatch = useDispatch();
-  const { taskList } = useSelector((store) => store.task);
+  const { filteredTask, taskList } = useSelector((store) => store.task);
 
   useEffect(() => {
     if (taskList.length === 0) {
@@ -14,7 +14,7 @@ const Task = () => {
 
   return (
     <>
-      { taskList.map((item) => (
+      { (filteredTask.length > 0 ? filteredTask : taskList).map((item) => (
         <div key={item.id}>
           <span>{item.status}</span>
           <h3>{item.title}</h3>
