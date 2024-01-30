@@ -1,8 +1,18 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import WelcomePage from './pages/WelcomePage';
+import AllTasksPage from './pages/AllTasksPage';
+import AddTaskPage from './pages/AddTaskPage';
+
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<WelcomePage />}>
+          <Route path="all-tasks" element={<AllTasksPage />} />
+          <Route path="add-task" element={<AddTaskPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
