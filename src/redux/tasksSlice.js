@@ -8,13 +8,20 @@ export const getTasks = createAsyncThunk('tasks/getTasks', async () => {
 
 const initialState = {
   taskList: [],
+  filteredTask: [],
   status: 'idle',
 };
 
 const tasksSlice = createSlice({
   name: 'task',
   initialState,
-  reducers: {},
+  reducers: {
+    filterTask: (state, action) => {
+      const filtered = action.payload;
+      const filteredTask = state.taskList.filter((task) => task.status.includes(filtered));
+      state.filteredTask = filteredTask.length > 0 ? filteredTask : [];
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getTasks.pending, (state) => {
@@ -30,4 +37,5 @@ const tasksSlice = createSlice({
   },
 });
 
+export const { filterTask } = tasksSlice.actions;
 export default tasksSlice.reducer;
