@@ -11,6 +11,7 @@
 
 - [📗 Table of Contents](#-table-of-contents)
 - [📖 TeachMeAI Dashboard ](#-teachmeai-dashboard-)
+  - [📅 Project plan ](#-project-plan-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -28,7 +29,36 @@
 
 # 📖 TeachMeAI Dashboard <a name="about-project"></a>
 
-**TeachMeAI Dashboard** is a Task Management Dashboard for the AI product called [Teachmate](https://teachmateai.com/). Users get to see a list of tasks, filter tasks based on the tasks' status, add new tasks, and edit existing tasks.
+**TeachMeAI Dashboard** is a Task Management Dashboard for the AI product called [Teachmate](https://teachmateai.com/). Users get to see a list of tasks, filter tasks based on the tasks' status, add new tasks, and edit existing tasks.  
+
+## 📅 Project plan <a name="project-plan"></a>
+
+Below is a summary of the steps taken during development:
+
+- Create Needed Routes:
+  - Set up the required routes for smooth navigation within the application.
+- Add Navigation Bar:
+  - Implement a navigation bar for seamless page navigation.
+- Create New Tasks Page:
+  - Develop a dedicated page for adding new tasks.
+- Initialize Data Storage:
+  - Set up an array for temporary data storage.
+- Implement Task Filtering:
+  - Create a feature allowing users to filter tasks on the list.
+- Add Newly Created Tasks:
+  - Include functionality to add newly created tasks to render on page.
+- Create Edit Page:
+  - Develop an edit page for tasks and implement functionality to update the page.
+- Responsive Styling with Tailwind:
+  - Utilize Tailwind CSS for responsive styling.
+
+During the development process, I initially explored the option of using localstorage for data persistence. While localstorage offers faster performance in synchronous operations, I opted for a local JSON file due to the following reasons:
+
+- Local JSON files can handle larger amounts of data compared to the size limitations of localstorage (typically around 5-10 MB).
+- Functions or methods designed for local JSON files can be seamlessly replaced with API calls to database endpoints during the transition to a production database.
+- When migrating to a more robust database system in production, necessary adjustments to connect to the database can be made without fundamentally changing the application's data-handling logic.
+
+Ultimately, I decided to use a simple array for temporary storage, realizing that the initial exploration surpassed the project's requirements.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -92,6 +122,7 @@ Initialize it with:
 ```
 npm start
 ```
+Note: The status of newly added tasks can be 'pending' or 'completed' depending on the date chosen by user. If the date is behind the current date, it would be rendered as 'completed', else 'pending'.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
