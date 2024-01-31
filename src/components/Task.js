@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateTask } from '../redux/tasksSlice';
+import Btn from './Btn';
 
 const Task = () => {
   const { filteredTask, taskList } = useSelector((store) => store.task);
@@ -90,7 +91,7 @@ const Task = () => {
               <textarea
                 className="outline outline-sky-500 indent-1"
                 maxLength={500}
-                rows={10}
+                rows={5}
                 cols={30}
                 id="desc"
                 type="text"
@@ -99,7 +100,7 @@ const Task = () => {
                 required
               />
             </label>
-            <input className="bg-green-700 hover:bg-green-500 text-white p-1 rounded" type="submit" value="Save" />
+            <Btn value="Save" />
           </form>
         </div>
       ))}

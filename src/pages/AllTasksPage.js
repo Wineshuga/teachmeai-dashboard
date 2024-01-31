@@ -17,7 +17,7 @@ const AllTasksPage = () => {
 
   return (
     <>
-      <h2 className="text-3xl">My Tasks</h2>
+      <h2 className="font-bold text-2xl">My Tasks</h2>
       <div className="flex gap-2 mt-3 md:justify-end justify-center items-center">
         <p className="border px-2 text-sm">
           <FontAwesomeIcon icon={faFilter} />

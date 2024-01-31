@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addTask } from '../redux/tasksSlice';
+import Btn from '../components/Btn';
 
 const AddTaskPage = () => {
   const dispatch = useDispatch();
@@ -45,11 +46,12 @@ const AddTaskPage = () => {
 
   return (
     <section>
-      <h2>Create New Task</h2>
+      <h2 className="font-bold text-2xl">Create New Task</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">
+        <label htmlFor="title" className="flex gap-2 my-2">
           Title:
           <input
+            className="outline outline-sky-500 indent-1"
             type="text"
             name="title"
             id="title"
@@ -58,11 +60,12 @@ const AddTaskPage = () => {
             required
           />
         </label>
-        <label htmlFor="desc">
+        <label htmlFor="desc" className="flex flex-col gap-2 my-2">
           Description:
           <textarea
+            className="outline outline-sky-500 indent-1"
             maxLength={500}
-            rows={10}
+            rows={5}
             cols={30}
             type="text"
             name="desc"
@@ -72,9 +75,11 @@ const AddTaskPage = () => {
             required
           />
         </label>
-        <label htmlFor="dueDate">
+        <label htmlFor="dueDate" className="flex gap-2 my-2">
           Due date:
+          { ' ' }
           <input
+            className="outline outline-sky-500 indent-1"
             type="date"
             name="dueDate"
             id="dueDate"
@@ -83,7 +88,7 @@ const AddTaskPage = () => {
             required
           />
         </label>
-        <input type="submit" value="Create Task" />
+        <Btn value="Create Task" />
       </form>
     </section>
   );
