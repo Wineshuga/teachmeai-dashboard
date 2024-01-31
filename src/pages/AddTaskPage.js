@@ -55,6 +55,7 @@ const AddTaskPage = () => {
             id="title"
             value={title}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="desc">
@@ -65,6 +66,7 @@ const AddTaskPage = () => {
             id="desc"
             value={desc}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="dueDate">
@@ -75,6 +77,7 @@ const AddTaskPage = () => {
             id="dueDate"
             value={dueDate}
             onChange={handleChange}
+            required
           />
         </label>
         <input type="submit" value="Create Task" />
