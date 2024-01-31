@@ -13,14 +13,22 @@ const WelcomePage = () => {
 
   return (
     <section className="flex">
-      <button type="button" onClick={toggleVisibility} className="md:hidden absolute py-3 mx-2 text-xl">
+      <button
+        type="button"
+        onClick={toggleVisibility}
+        className="md:hidden absolute py-3 mx-2 text-xl"
+      >
         {' '}
         <FontAwesomeIcon icon={faBars} />
       </button>
-      <section className={`md:block ${dashboardVisible ? 'visible' : 'hidden'} absolute bg-sky-500 pt-12 p-3 h-screen`}>
+      <section
+        className={`md:block ${
+          dashboardVisible ? 'visible' : 'hidden'
+        } md:sticky absolute bg-sky-500 pt-12 p-3 md:w-1/3 h-screen`}
+      >
         <Dashboard visible={toggleVisibility} />
       </section>
-      <section className="md:pt-3 px-2 pt-10">
+      <section className="md:pt-3 m-1 p-2 mt-12 border-2 border-sky-500 w-screen h-full">
         <Outlet />
       </section>
     </section>

@@ -25,23 +25,35 @@ const Task = () => {
 
   return (
     <>
-      { (filteredTask.length === 0 && taskList.length === 0) && (
-        <div>
+      {filteredTask.length === 0 && taskList.length === 0 && (
+        <div className="flex flex-col justify-center items-center h-40">
           <p>You have no tasks on the list</p>
-          <Link to="../add-task">Create a New Task</Link>
+          <Link
+            className="bg-sky-500 text-white p-3 mt-2 rounded hover:bg-sky-700"
+            to="../add-task"
+          >
+            Create a New Task
+          </Link>
         </div>
-      ) }
+      )}
 
-      { (filteredTask.length > 0 ? filteredTask : taskList).map((item) => (
+      {(filteredTask.length > 0 ? filteredTask : taskList).map((item) => (
         <div key={item.id}>
-          <div style={{ display: editingTaskId === item.id ? 'none' : 'block' }}>
-            <button type="button" onClick={() => handleEditing(item.id)}>Edit</button>
+          <div
+            style={{ display: editingTaskId === item.id ? 'none' : 'block' }}
+          >
+            <button type="button" onClick={() => handleEditing(item.id)}>
+              Edit
+            </button>
             <span>{item.status}</span>
             <h3>{item.title}</h3>
             <p>{item.desc}</p>
             <p>{item.dueDate}</p>
           </div>
-          <form style={{ display: editingTaskId === item.id ? 'block' : 'none' }} onSubmit={handleUpdatedDone}>
+          <form
+            style={{ display: editingTaskId === item.id ? 'block' : 'none' }}
+            onSubmit={handleUpdatedDone}
+          >
             <input
               type="text"
               value={item.title}
@@ -57,7 +69,7 @@ const Task = () => {
             <input type="submit" value="Save" />
           </form>
         </div>
-      )) }
+      ))}
     </>
   );
 };
