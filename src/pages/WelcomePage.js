@@ -28,7 +28,7 @@ const WelcomePage = () => {
       >
         <Dashboard visible={toggleVisibility} />
       </section>
-      <section className="md:pt-3 m-1 p-2 mt-12 border-2 border-sky-500 w-screen h-full">
+      <section className="md:pt-3 md:p-5 md:mx-5 m-1 p-2 mt-12 border-2 border-sky-500 w-screen h-full">
         <Outlet />
       </section>
     </section>

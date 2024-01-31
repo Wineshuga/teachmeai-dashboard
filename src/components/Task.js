@@ -38,35 +38,68 @@ const Task = () => {
       )}
 
       {(filteredTask.length > 0 ? filteredTask : taskList).map((item) => (
-        <div key={item.id}>
-          <div
+        <div className="md:mx-auto md:w-11/12 border-2 border-sky-500 mt-3 px-3 py-2" key={item.id}>
+          <section
             style={{ display: editingTaskId === item.id ? 'none' : 'block' }}
           >
-            <button type="button" onClick={() => handleEditing(item.id)}>
-              Edit
-            </button>
-            <span>{item.status}</span>
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
-            <p>{item.dueDate}</p>
-          </div>
+            <div className="flex gap-2 mt-3 md:justify-end justify-end items-center">
+              <button className="bg-sky-500 hover:bg-sky-700 text-white px-1 rounded" type="button" onClick={() => handleEditing(item.id)}>
+                Edit
+              </button>
+              <span className={`border text-sm px-2 rounded ${
+                item.status === 'completed' ? 'border-green-400 bg-green-100' : 'border-red-400 bg-red-100'
+              }`}
+              >
+                {item.status}
+              </span>
+            </div>
+            <h3 className="text-xl font-bold">
+              Title:
+              {' '}
+              {item.title}
+            </h3>
+            <p>
+              <span className="font-bold">Description:</span>
+              {' '}
+              {item.desc}
+            </p>
+            <p>
+              <span className="font-bold">Due Date:</span>
+              {' '}
+              {item.dueDate}
+            </p>
+          </section>
           <form
             style={{ display: editingTaskId === item.id ? 'block' : 'none' }}
             onSubmit={handleUpdatedDone}
           >
-            <input
-              type="text"
-              value={item.title}
-              onChange={(e) => handleUpdate(item.id, e.target.value, item.desc)}
-              required
-            />
-            <input
-              type="text"
-              value={item.desc}
-              onChange={(e) => handleUpdate(item.id, item.title, e.target.value)}
-              required
-            />
-            <input type="submit" value="Save" />
+            <label htmlFor="title" className="flex gap-2 my-2">
+              Title:
+              { ' ' }
+              <input
+                className="outline outline-sky-500 indent-1"
+                id="title"
+                type="text"
+                value={item.title}
+                onChange={(e) => handleUpdate(item.id, e.target.value, item.desc)}
+                required
+              />
+            </label>
+            <label htmlFor="desc" className="flex flex-col gap-2 my-2">
+              Description:
+              <textarea
+                className="outline outline-sky-500 indent-1"
+                maxLength={500}
+                rows={10}
+                cols={30}
+                id="desc"
+                type="text"
+                value={item.desc}
+                onChange={(e) => handleUpdate(item.id, item.title, e.target.value)}
+                required
+              />
+            </label>
+            <input className="bg-green-700 hover:bg-green-500 text-white p-1 rounded" type="submit" value="Save" />
           </form>
         </div>
       ))}

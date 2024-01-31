@@ -26,7 +26,7 @@ const AllTasksPage = () => {
         </p>
         <button
           type="button"
-          className="border border-sky-500 text-sm px-2"
+          className="border border-sky-500 rounded text-sm px-2"
           value={filter}
           onClick={(e) => handleClick(e)}
         >
@@ -34,7 +34,7 @@ const AllTasksPage = () => {
         </button>
         <button
           type="button"
-          className="border border-red-400 text-sm px-2 bg-red-100"
+          className="border border-red-400 rounded text-sm px-2 bg-red-100"
           value={filter}
           onClick={(e) => handleClick(e)}
         >
@@ -42,7 +42,7 @@ const AllTasksPage = () => {
         </button>
         <button
           type="button"
-          className="border border-green-400  text-sm px-2 bg-green-100"
+          className="border border-green-400  rounded text-sm px-2 bg-green-100"
           value={filter}
           onClick={(e) => handleClick(e)}
         >

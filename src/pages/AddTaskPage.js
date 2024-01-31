@@ -60,7 +60,10 @@ const AddTaskPage = () => {
         </label>
         <label htmlFor="desc">
           Description:
-          <input
+          <textarea
+            maxLength={500}
+            rows={10}
+            cols={30}
             type="text"
             name="desc"
             id="desc"
