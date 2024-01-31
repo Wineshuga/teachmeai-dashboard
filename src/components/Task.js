@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTasks } from '../redux/tasksSlice';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Task = () => {
-  const dispatch = useDispatch();
   const { filteredTask, taskList } = useSelector((store) => store.task);
-
-  useEffect(() => {
-    if (taskList.length === 0) {
-      dispatch(getTasks());
-    }
-  }, [taskList.length, dispatch]);
 
   return (
     <>
+      { (filteredTask.length === 0 && taskList.length === 0) && (
+        <div>
+          <p>You have no tasks on the list</p>
+          <Link to="../add-task">Create a New Task</Link>
+        </div>
+      ) }
+
       { (filteredTask.length > 0 ? filteredTask : taskList).map((item) => (
         <div key={item.id}>
           <span>{item.status}</span>
