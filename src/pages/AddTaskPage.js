@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { addTask } from '../redux/tasksSlice';
 
 const AddTaskPage = () => {
+  const dispatch = useDispatch();
+
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -18,7 +23,21 @@ const AddTaskPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Task submitted:', { title, desc, dueDate });
+
+    const currentDate = new Date();
+    const inputDate = new Date(dueDate);
+
+    const status = inputDate > currentDate ? 'pending' : 'completed';
+
+    const newTask = {
+      id: nanoid(),
+      title,
+      desc,
+      dueDate,
+      status,
+    };
+
+    dispatch(addTask(newTask));
     setTitle('');
     setDesc('');
     setDueDate('');
@@ -52,8 +71,8 @@ const AddTaskPage = () => {
           Due date:
           <input
             type="date"
-            name="date"
-            id="date"
+            name="dueDate"
+            id="dueDate"
             value={dueDate}
             onChange={handleChange}
           />
